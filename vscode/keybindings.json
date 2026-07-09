@@ -1,0 +1,12 @@
+[
+  // Move lines up/down with Alt+Up / Alt+Down (default on most platforms,
+  // declared here so it's consistent everywhere).
+  { "key": "alt+up", "command": "editor.action.moveLinesUpAction", "when": "editorTextFocus && !editorReadonly" },
+  { "key": "alt+down", "command": "editor.action.moveLinesDownAction", "when": "editorTextFocus && !editorReadonly" },
+
+  // Toggle the integrated terminal with Ctrl+`
+  { "key": "ctrl+`", "command": "workbench.action.terminal.toggleTerminal" },
+
+  // Quick file save-all
+  { "key": "ctrl+alt+s", "command": "workbench.action.files.saveAll" }
+]

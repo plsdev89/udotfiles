@@ -1,0 +1,20 @@
+# Force LF line endings for everything so shell scripts work on Linux,
+# even when the repo is edited/cloned on Windows.
+* text=auto eol=lf
+
+*.sh    text eol=lf
+*.zsh   text eol=lf
+*.bash  text eol=lf
+*.lua   text eol=lf
+*.toml  text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.json  text eol=lf
+.zshrc  text eol=lf
+.zsh_plugins.txt text eol=lf
+.gitconfig text eol=lf
+
+# Treat fonts/binaries as binary
+*.ttf   binary
+*.otf   binary
+*.png   binary

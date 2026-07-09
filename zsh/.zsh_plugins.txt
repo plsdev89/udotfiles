@@ -1,0 +1,29 @@
+# antidote plugin list — https://antidote.sh
+# Order matters: frameworks/libs first, completions next, then UX plugins,
+# with syntax-highlighting and history-substring-search last.
+
+# --- oh-my-zsh, managed by antidote ---------------------------------------
+# use-omz sets up the OMZ environment so its libs/plugins behave correctly.
+getantidote/use-omz
+ohmyzsh/ohmyzsh path:lib
+
+# Handy oh-my-zsh plugins (each is a path into the OMZ repo).
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/sudo
+ohmyzsh/ohmyzsh path:plugins/extract
+ohmyzsh/ohmyzsh path:plugins/command-not-found
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+ohmyzsh/ohmyzsh path:plugins/copypath
+ohmyzsh/ohmyzsh path:plugins/copyfile
+
+# --- extra completions -----------------------------------------------------
+zsh-users/zsh-completions
+
+# --- UX plugins ------------------------------------------------------------
+zsh-users/zsh-autosuggestions
+
+# fast-syntax-highlighting must come before history-substring-search.
+zdharma-continuum/fast-syntax-highlighting
+
+# arrow-up/down search through matching history (load last).
+zsh-users/zsh-history-substring-search

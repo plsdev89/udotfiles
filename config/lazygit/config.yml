@@ -1,0 +1,41 @@
+# lazygit config — https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+gui:
+  theme:
+    activeBorderColor:
+      - "#cba6f7" # mauve
+      - bold
+    inactiveBorderColor:
+      - "#585b70" # surface2
+    selectedLineBgColor:
+      - "#313244" # surface0
+    optionsTextColor:
+      - "#89b4fa" # blue
+    cherryPickedCommitBgColor:
+      - "#45475a" # surface1
+    cherryPickedCommitFgColor:
+      - "#cba6f7" # mauve
+    unstagedChangesColor:
+      - "#f38ba8" # red
+    defaultFgColor:
+      - "#cdd6f4" # text
+  nerdFontsVersion: "3"
+  showFileTree: true
+  showRandomTip: false
+  showCommandLog: false
+  scrollHeight: 2
+  mouseEvents: true
+
+git:
+  paging:
+    colorArg: always
+    # Use delta if installed for nicer diffs; falls back gracefully otherwise.
+    pager: delta --dark --paging=never
+  autoFetch: true
+  fetchAll: true
+
+# Open files/changes in neovim from within lazygit.
+os:
+  editPreset: "nvim"
+
+# Confirm before quitting only when there are in-progress operations.
+confirmOnQuit: false

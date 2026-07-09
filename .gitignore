@@ -1,0 +1,17 @@
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Backups created by the installer
+*.bak
+*.backup
+backup/
+
+# Local, machine-specific overrides (never tracked)
+zsh/local.zsh
+git/local.gitconfig
+
+# Generated antidote static plugin file (lives in $HOME, just in case)
+.zsh_plugins.zsh
