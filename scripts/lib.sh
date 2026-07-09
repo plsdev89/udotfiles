@@ -95,9 +95,13 @@ download() {
 github_latest_tag() {
   local repo="$1"
   local api="https://api.github.com/repos/${repo}/releases/latest"
+
+  local json
   if command_exists curl; then
-    curl -fsSL "$api"
+    json="$(curl -fsSL "$api")"
   else
-    download "$api" /dev/stdout
-  fi | grep -m1 '"tag_name"' | sed -E 's/.*"tag_name": *"([^"]+)".*/\1/'
+    json="$(download "$api" /dev/stdout)"
+  fi
+
+  printf '%s\n' "$json" | grep -m1 '"tag_name"' | sed -E 's/.*"tag_name": *"([^"]+)".*/\1/'
 }

@@ -53,11 +53,12 @@ else
 fi
 
 # --- make zsh the default shell ---
-ZSH_PATH="$(command -v zsh)"
+ZSH_PATH="/usr/bin/zsh"
+
 if [ "${SHELL:-}" != "$ZSH_PATH" ]; then
   step "Setting zsh as the default shell"
-  if grep -q "$ZSH_PATH" /etc/shells 2>/dev/null || run_root sh -c "echo '$ZSH_PATH' >> /etc/shells"; then :; fi
-  if chsh -s "$ZSH_PATH" 2>/dev/null; then
+
+  if chsh -s "$ZSH_PATH"; then
     success "default shell set to zsh (re-login to take effect)"
   else
     warn "chsh failed; run manually: chsh -s $ZSH_PATH"

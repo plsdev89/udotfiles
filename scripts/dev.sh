@@ -99,10 +99,13 @@ setup_nvm() {
 
   if command_exists corepack; then
     step "Enabling Yarn via corepack"
-    corepack enable yarn >/dev/null 2>&1 || corepack enable
-    success "corepack / yarn ready ($(yarn -v 2>/dev/null || echo 'enabled'))"
+
+    corepack enable
+    corepack prepare yarn@stable --activate
+
+    success "corepack / yarn ready ($(yarn -v))"
   else
-    warn "corepack not found — install a recent Node and run: corepack enable yarn"
+    warn "corepack not found — install a recent Node and run: corepack enable"
   fi
 }
 setup_nvm
@@ -227,15 +230,21 @@ install_zellij() {
   fi
 
   local tmp; tmp="$(mktemp -d)"
-  local url="https://github.com/zellij-org/zellij/releases/download/${tag}/zellij-${asset_arch}.tar.xz"
-  if ! download "$url" "$tmp/zellij.tar.xz"; then
+  local url="https://github.com/zellij-org/zellij/releases/download/${tag}/zellij-${asset_arch}.tar.gz"
+
+  if ! download "$url" "$tmp/zellij.tar.gz"; then
     warn "zellij download failed ($url)"
-    rm -rf "$tmp"; return 1
+    rm -rf "$tmp"
+    return 1
   fi
-  tar -xJf "$tmp/zellij.tar.xz" -C "$tmp" zellij
+
+  tar -xvf "$tmp/zellij.tar.gz" -C "$tmp" zellij
+
   mkdir -p "$HOME/.local/bin"
   install -m 755 "$tmp/zellij" "$HOME/.local/bin/zellij"
+
   rm -rf "$tmp"
+
   success "zellij $version installed -> ~/.local/bin/zellij"
 }
 install_zellij
